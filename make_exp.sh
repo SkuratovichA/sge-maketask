@@ -70,22 +70,22 @@ print_params() {
 # fi
 while [ "$#" -gt 0 ] ; do
   case "$1" in
-  	--name)
-	  	shift
-	  	name="$1"
-	  	;;
+    --name)
+      shift
+      name="$1"
+      ;;
     --traindir)
-	  	shift
-	  	traindir="$1"
+      shift
+      traindir="$1"
       echo "Not supported yet"
-      exit -2
-	  	;;
-	  --run)
-			run=1
-			;;
-	  --qsub|--clusterfuck)
-			qsub=1
-			;;
+      exit 1
+      ;;
+    --run)
+      run=1
+      ;;
+    --qsub|--clusterfuck)
+      qsub=1
+      ;;
     --py)
       shift
       py="$1"
@@ -114,11 +114,11 @@ while [ "$#" -gt 0 ] ; do
       shift
       ram_free="$1"
       ;;
-  	*)
-      echo "Argument: \"$1\""
-      print_help
-		  exit -1
-		  ;;
+    *)
+  	  echo "Argument: \"$1\""
+  	  print_help
+  	  exit 1
+  	  ;;
     ## TODO: envname, owner...
   esac
   shift
@@ -130,12 +130,12 @@ mkdir -p "$traindir"
 
 # check directory
 if [ -d "$traindir/$name" ]; then
-	echo -n "Experiment \"$traindir/$name\" exists. Overwrite? [y/n]: "
-	read -r ans
+  echo -n "Experiment \"$traindir/$name\" exists. Overwrite? [y/n]: "
+  read -r ans
 	if [[ "$ans" == [Nn] ]]; then
-    echo "Aborting..."
-    exit 0
-	fi
+	  echo "Aborting..."
+	  exit 0
+	  fi
 fi
 
 mkdir -p "$traindir/${name}"
