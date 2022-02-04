@@ -135,7 +135,7 @@ if [ -d "$traindir/$name" ]; then
   if [[ "$ans" == [Nn] ]]; then
     echo "Aborting..."
     exit 0
-	fi
+  fi
 fi
 
 mkdir -p "$traindir/${name}"
