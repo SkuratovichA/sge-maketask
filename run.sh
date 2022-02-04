@@ -16,14 +16,14 @@ _hyperparams_=_YAML_
 source /mnt/matylda3/xskura01/miniconda3/envs/activate_sb.sh || { 
   cat "ENV ERROR" >> $gym/"______$expnam""_______ERROR"
   echo "no conda env" ;
-  exit -1 ; 
+  exit 1 ;
 }
 
 # TODO: make compatible with custom train folder
 cd _Y_TRAIN_Y_/$expnam || {
   cat "NO EXPNAM" >> $gym/"______$expnam""_______ERROR"
   echo "no tainfolder..." ; 
-  exit -1 ; 
+  exit 1 ;
 }
 
 
@@ -31,7 +31,7 @@ cd _Y_TRAIN_Y_/$expnam || {
 python "${PWD}/$_train_file_" "${PWD}/$_hyperparams_" || { 
   # TODO cat log here
   touch $gym/"______$expnam""_______ERROR"
-  exit -1 ;
+  exit 1 ;
 }
 ##################################
 
