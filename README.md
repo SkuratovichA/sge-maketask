@@ -7,5 +7,5 @@ make_exp -h
 
 
 TODOs:
-- before running the script, there's need to change `$OWNER` in make_exp. 
+- before running the script, there's need to change `$OWNER` in the `make_exp.sh` file
 - many other things (perhaps)
