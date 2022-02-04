@@ -115,10 +115,10 @@ while [ "$#" -gt 0 ] ; do
       ram_free="$1"
       ;;
     *)
-  	  echo "Argument: \"$1\""
-  	  print_help
-  	  exit 1
-  	  ;;
+      echo "Argument: \"$1\""
+      print_help
+      exit 1
+      ;;
     ## TODO: envname, owner...
   esac
   shift
@@ -132,10 +132,10 @@ mkdir -p "$traindir"
 if [ -d "$traindir/$name" ]; then
   echo -n "Experiment \"$traindir/$name\" exists. Overwrite? [y/n]: "
   read -r ans
-	if [[ "$ans" == [Nn] ]]; then
-	  echo "Aborting..."
-	  exit 0
-	  fi
+  if [[ "$ans" == [Nn] ]]; then
+    echo "Aborting..."
+    exit 0
+	fi
 fi
 
 mkdir -p "$traindir/${name}"
@@ -167,13 +167,12 @@ fi
 mkdir -p "$traindir/${name}/sge"
 
 if [ ${run} -eq 1 ]; then
-	if [ ${qsub} -eq 1 ]; then
-  	qsub "$traindir/${name}/run.sh"
-	else
-		bash "$traindir/${name}/run.sh"
-	fi
+  if [ ${qsub} -eq 1 ]; then
+    qsub "$traindir/${name}/run.sh"
+  else
+    bash "$traindir/${name}/run.sh"
+  fi
 fi
 
 echo ""
 echo "new task $traindir/${name} created"
-
