@@ -7,15 +7,18 @@ OWNER=xskura01
 # TODO: somehow add envnam to script
 ENVNAM=sb
 
+name=$(python -c 'import uuid, sys; print(str(uuid.uuid4())[:8])')
 py="train.py"
 yaml="train.yaml"
 RUN_SCRIPT="/mnt/matylda3/$OWNER/workspace/scripts/run.sh"
-
-
+gpu="1"
+gpu_ram="40G"
+mem_free="10G"
+ram_free="16"
+yaml="train.yaml"
+py="train.py"
 add=""
 traindir="/mnt/matylda3/$OWNER/workspace/gym"
-name=$(python -c 'import uuid, sys; print(str(uuid.uuid4())[:8])')
-
 run=0
 qsub=1
 
@@ -36,17 +39,17 @@ source "/mnt/matylda3/$OWNER/miniconda3/envs/activate_$ENVNAM.sh" || { "No conda
 
 # . ../rustyspoons/utils/parse_options.sh
 print_help() {
-  echo "--name             => experimet and directory name. default: unix timestamp"
-  echo "--run              => submitting a task. default: false"
-  echo "--qsub             => if run option is specified, then use qsub or not."
+  echo "--name             => experimet and directory name. default: unix timestamp, e.g. ${name}"
+  echo "--run              => submitting a task. default: ${run}"
+  echo "--qsub             => use qsub or bash for running (if run is 1). default: ${qsub}"
   echo "--add              => additional files for training. TODO: ONLY ONE FILE IS SUPPORTED, YET"
-  echo "--traindir         => directory. defaut: \"/mnt/matylda3/$OWNER/workspace/gym\""
-  echo "--gpu              => number of gpus. default: 1"
-  echo "--gpu_ram          => gpu ram. default: 44G"
-  echo "--mem_free         => ???. default: 16G"
-  echo "--ram_free         => ???. default: 16G"
-  echo "--yaml             => hyperparams file. default: train.yaml"
-  echo "--py               => python file. default: train.py"
+  echo "--traindir         => directory. defaut: ${traindir}"
+  echo "--gpu              => number of gpus. default: ${gpu}"
+  echo "--gpu_ram          => gpu ram. default: ${gpu_ram}G"
+  echo "--mem_free         => ???. default: ${mem_free}G"
+  echo "--ram_free         => ???. default: ${ram_free}G"
+  echo "--yaml             => hyperparams file. default: $yaml"
+  echo "--py               => python file. default: $py"
 }
 
 print_params() {
