@@ -1,8 +1,6 @@
 #!/bin/bash
 
-full_hostname=$(hostname -f)
-# TODO: soemhow connect owner and full_hostname
-OWNER=xskura01
+OWNER=$(whoami)
 
 # TODO: somehow add envnam to script
 ENVNAM=sb
@@ -12,8 +10,8 @@ py="train.py"
 yaml="train.yaml"
 RUN_SCRIPT="/mnt/matylda3/$OWNER/workspace/scripts/run.sh"
 gpu="1"
-gpu_ram="40G"
-mem_free="10G"
+gpu_ram="40"
+mem_free="10"
 ram_free="16"
 yaml="train.yaml"
 py="train.py"
