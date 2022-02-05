@@ -11,4 +11,6 @@ TODOs:
 - make optional email nootifications
 - better error reporting
 - rewrite in python? Everyone loves python !
+- probably add an option to use different directories for networks which are being trained and other nets
 - many other things (perhaps)
+
