@@ -127,6 +127,15 @@ done
 
 print_params
 
+
+if [  "$traindir" = "" ] ; then
+  echo "Set the traindir parameter properly !"
+  exit 1
+fi
+if [  "$name" = "" ] ; then
+  echo "Set the name parameter properly !"
+  exit 1
+fi
 mkdir -p "$traindir"
 
 # check directory
@@ -138,7 +147,6 @@ if [ -d "$traindir/$name" ]; then
     exit 0
   fi
 fi
-
 mkdir -p "$traindir/${name}"
 
 
